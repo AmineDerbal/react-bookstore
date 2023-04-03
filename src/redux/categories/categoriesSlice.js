@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   categories: [],
+  message: '',
 };
 
 const categoriesSlice = createSlice({
@@ -9,10 +10,7 @@ const categoriesSlice = createSlice({
   initialState,
   reducers: {
     checkStatus: (state) => {
-      if (state.categories.length === 0) {
-        return 'Under construction';
-      }
-      return 'Under construction';
+      state.message = 'Under construction';
     },
   },
 });
