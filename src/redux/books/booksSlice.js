@@ -22,7 +22,7 @@ const bookItems = [
 ];
 
 const initialState = {
-  books: bookItems,
+  books: [...bookItems],
 };
 
 const booksSlice = createSlice({
@@ -32,8 +32,9 @@ const booksSlice = createSlice({
     addBook: (state, { payload }) => {
       state.books.push({ title: payload.title, author: payload.author });
     },
-    removeBook: (state, { payload }) => {
-      state.books.filter((book) => book.id !== payload.id);
+    removeBook: (state, action) => {
+      const bookId = action.payload;
+      state.books = state.books.filter((book) => book.id !== bookId);
     },
   },
 });
