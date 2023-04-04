@@ -10,8 +10,8 @@
   box-sizing: border-box;
   display: block;
   position: absolute;
-  width: 64px;
-  height: 64px;
+  width: 150px;
+  height: 150px;
   margin: 8px;
   border: 8px solid #fff;
   border-radius: 50%;
