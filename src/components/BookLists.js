@@ -23,13 +23,19 @@ const BookLists = () => {
   }
   if (error) return <h2>An error has occured</h2>;
   if (books.length === 0) return <h2>there are no books</h2>;
-  return (
-    <div>
-      {books.map((book) => (
-        <Book key={book.id} book={book} />
-      ))}
+  // return (
+  //   <div className="Lesson-Panel">
+  //     {books.map((book) => (
+  //       <Book key={book.id} book={book} />
+  //     ))}
+  //   </div>
+  // );
+
+  return books.map((book) => (
+    <div key={book.id} className="Lesson-Panel">
+      <Book key={book.id} book={book} />
     </div>
-  );
+  ));
 };
 
 export default BookLists;
