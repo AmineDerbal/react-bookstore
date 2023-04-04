@@ -66,15 +66,6 @@ export const deleteBookFromApi = createAsyncThunk('books/deleteBookFromApi', asy
 const booksSlice = createSlice({
   name: 'books',
   initialState,
-  reducers: {
-    addBook: (state, { payload }) => {
-      state.books.push({ id: payload.id, title: payload.title, author: payload.author });
-    },
-    removeBook: (state, action) => {
-      const bookId = action.payload;
-      state.books = state.books.filter((book) => book.id !== bookId);
-    },
-  },
   extraReducers: (builder) => {
     builder.addCase(getBooksData.pending, (state) => {
       state.isLoading = true;
@@ -108,5 +99,4 @@ const booksSlice = createSlice({
   },
 });
 
-export const { addBook, removeBook } = booksSlice.actions;
 export default booksSlice.reducer;
