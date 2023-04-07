@@ -37,22 +37,19 @@ export const getBooksData = createAsyncThunk('books/getBooksData', async () => {
   }
 });
 
-export const postBookToApi = createAsyncThunk(
-  'books/postBookToApi',
-  async ({ id, title, author }) => {
-    try {
-      const dataStream = await axios.post(url, {
-        item_id: id,
-        title,
-        author,
-        category: 'fiction',
-      });
-      return dataStream;
-    } catch (err) {
-      return err;
-    }
-  },
-);
+export const postBookToApi = createAsyncThunk('books/postBookToApi', async ({ id, title, author }) => {
+  try {
+    const dataStream = await axios.post(url, {
+      item_id: id,
+      title,
+      author,
+      category: 'fiction',
+    });
+    return dataStream;
+  } catch (err) {
+    return err;
+  }
+});
 
 export const deleteBookFromApi = createAsyncThunk('books/deleteBookFromApi', async (id) => {
   try {
@@ -68,33 +65,51 @@ const booksSlice = createSlice({
   initialState,
   extraReducers: (builder) => {
     builder.addCase(getBooksData.pending, (state) => {
-      state.isLoading = true;
+      const newState = { ...state };
+      newState.isLoading = true;
+      return newState;
     });
     builder.addCase(getBooksData.fulfilled, (state, action) => {
-      state.isLoading = false;
-      state.books = action.payload;
+      const newState = { ...state };
+      newState.isLoading = false;
+      newState.books = action.payload;
+      return newState;
     });
     builder.addCase(getBooksData.rejected, (state) => {
-      state.isLoading = false;
-      state.error = true;
+      const newState = { ...state };
+      newState.isLoading = false;
+      newState.error = true;
+      return newState;
     });
     builder.addCase(postBookToApi.pending, (state) => {
-      state.ifSuccess = false;
+      const newState = { ...state };
+      newState.ifSuccess = false;
+      return newState;
     });
     builder.addCase(postBookToApi.fulfilled, (state) => {
-      state.ifSuccess = true;
+      const newState = { ...state };
+      newState.ifSuccess = true;
+      return newState;
     });
     builder.addCase(postBookToApi.rejected, (state) => {
-      state.ifSuccess = false;
+      const newState = { ...state };
+      newState.ifSuccess = false;
+      return newState;
     });
     builder.addCase(deleteBookFromApi.pending, (state) => {
-      state.ifSuccess = false;
+      const newState = { ...state };
+      newState.ifSuccess = false;
+      return newState;
     });
     builder.addCase(deleteBookFromApi.fulfilled, (state) => {
-      state.ifSuccess = true;
+      const newState = { ...state };
+      newState.ifSuccess = true;
+      return newState;
     });
     builder.addCase(deleteBookFromApi.rejected, (state) => {
-      state.ifSuccess = false;
+      const newState = { ...state };
+      newState.ifSuccess = false;
+      return newState;
     });
   },
 });
