@@ -65,51 +65,71 @@ const booksSlice = createSlice({
   initialState,
   extraReducers: (builder) => {
     builder.addCase(getBooksData.pending, (state) => {
-      const newState = { ...state };
-      newState.isLoading = true;
-      return newState;
+      const isLoading = true;
+      return {
+        ...state,
+        isLoading,
+      };
     });
     builder.addCase(getBooksData.fulfilled, (state, action) => {
-      const newState = { ...state };
-      newState.isLoading = false;
-      newState.books = action.payload;
-      return newState;
+      const isLoading = false;
+      const books = action.payload;
+      return {
+        ...state,
+        books,
+        isLoading,
+      };
     });
     builder.addCase(getBooksData.rejected, (state) => {
-      const newState = { ...state };
-      newState.isLoading = false;
-      newState.error = true;
-      return newState;
+      const isLoading = false;
+      const error = true;
+      return {
+        ...state,
+        isLoading,
+        error,
+      };
     });
     builder.addCase(postBookToApi.pending, (state) => {
-      const newState = { ...state };
-      newState.ifSuccess = false;
-      return newState;
+      const ifSuccess = false;
+      return {
+        ...state,
+        ifSuccess,
+      };
     });
     builder.addCase(postBookToApi.fulfilled, (state) => {
-      const newState = { ...state };
-      newState.ifSuccess = true;
-      return newState;
+      const ifSuccess = true;
+      return {
+        ...state,
+        ifSuccess,
+      };
     });
     builder.addCase(postBookToApi.rejected, (state) => {
-      const newState = { ...state };
-      newState.ifSuccess = false;
-      return newState;
+      const ifSuccess = false;
+      return {
+        ...state,
+        ifSuccess,
+      };
     });
     builder.addCase(deleteBookFromApi.pending, (state) => {
-      const newState = { ...state };
-      newState.ifSuccess = false;
-      return newState;
+      const ifSuccess = false;
+      return {
+        ...state,
+        ifSuccess,
+      };
     });
     builder.addCase(deleteBookFromApi.fulfilled, (state) => {
-      const newState = { ...state };
-      newState.ifSuccess = true;
-      return newState;
+      const ifSuccess = true;
+      return {
+        ...state,
+        ifSuccess,
+      };
     });
     builder.addCase(deleteBookFromApi.rejected, (state) => {
-      const newState = { ...state };
-      newState.ifSuccess = false;
-      return newState;
+      const ifSuccess = false;
+      return {
+        ...state,
+        ifSuccess,
+      };
     });
   },
 });
